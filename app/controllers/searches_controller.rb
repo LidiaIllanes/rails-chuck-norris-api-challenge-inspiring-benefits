@@ -29,11 +29,17 @@ class SearchesController < ApplicationController
     unless params[:page].nil?
       @page = params[:page].to_i
     end
-
-    @first_page = []
-    @first_page << (@result_values[@page])
-    @first_page << (@result_values[@page+1])
-    @first_page << (@result_values[@page+2])
+    @page_arr = []
+    while @result_values.length > 0
+      @page_arr << @result_values[@page]
+      @page += 1
+    end 
+    #@page_arr = []
+    #3.times { @page_arr << (@result_values[@page]) }
+    #@page_arr << (@result_values[@page])
+    #@page_arr << (@result_values[@page+1])
+    #@page_arr << (@result_values[@page+2])
+    #@page_arr << (@result_values[@page+2])
   end
 
   private

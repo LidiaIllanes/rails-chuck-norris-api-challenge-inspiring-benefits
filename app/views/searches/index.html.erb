@@ -27,8 +27,8 @@
     <% if @random_fact || @random_cat_fact %>
       <h2>"<%= @random_fact || @random_cat_fact %>"</h2>
       <% else %>
-      <%if @first_page%>
-        <% @first_page.each do |fact| %>
+      <%if @page_arr%>
+        <% @page_arr.each do |fact| %>
           <h4 class="mb-4">"<%= fact['value'] %>"</h4>
         <% end %>
         <%= link_to "Prev page", request.query_parameters.merge({:page => -3}) %>
