@@ -17,6 +17,7 @@ El buscador tendrá las siguientes características:
   * La estructura y el diseño de la página y de los correos son completamente libres, al igual que el modelo de datos para guardar la información. Se puede añadir cualquier otra funcionalidad o mejora que se considere.
 
   * Forma de entrega: subirlo a un repositorio público de GitHub o Bitbucket incluyendo una carpeta con algunas capturas de pantalla de la solución desarrollada y una pequeña explicación sobre la solución planteada en el Readme.
+  ********************************************************************
 
 1. Create rails app
 
@@ -33,9 +34,9 @@ El buscador tendrá las siguientes características:
     * if the params passed are from the random field or category dropdown in the view,
      the method api_call will be call passing as argument the concatenation of the base_filepath and the random/categoy 
      api_call will open, read and parse the json file and return it.
-     then it will retreve the value of the key 'value' and store it in a global variable so it can be call from the view.
-     * if the params passed are from the query field it ill call the api_call the same way but once they are parse it will iterate trouth them to extract each value of each the key 'value' and store them into the @resul_values variable as an array.
-    * And lastly call the method paginate() on those results to distribute them in pages that the view can use.
+     then it will retrieve the value of the key 'value' and store it in a global variable so it can be called from the view.
+     * if the params passed are from the query field it ill call the api_call the same way but once they are parse it will iterate trough them to extract each value of each the key 'value' and store them into the @resul_values variable as an array.
+    * And lastly, call the method paginate() on those results to distribute them in pages that the view can use.
     
 6. Create Index view
   * Searches form
