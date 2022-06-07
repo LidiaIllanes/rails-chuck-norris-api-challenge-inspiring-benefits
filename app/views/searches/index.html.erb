@@ -4,19 +4,25 @@
     <%= text_field_tag :query,
       params[:query],
       id: "query",
-      class: "form-control mb-3",
-      placeholder: "Enter a word to search"
+      class: "form-control mb-4",
+      placeholder: "Enter a word to search some Chuck Norris funny facts!"
     %>
     <%# the below commented out is categories - needs to be dropdown %>
-    <%= label_tag :category, "Enter one of this categories to get a random fact: animal, career, celebrity, dev, explicit, fashion, food, history, money, movie, music, political, religion, science, sports or travel"
-      text_field_tag :category,
-      params[:category],
-      id: "category",
-      class: "form-control mb-3",
-      placeholder: "get a random fact from a this category"
-    %>
-    <%= check_box_tag(:random) %>
-    <%= label_tag(:random, "Find me a random fact") %>
+    <%= label_tag(:category, " You can choose a ramdom fact from one of this categories! ") %>
+    <%=select_tag :category, options_for_select(@categories), include_blank: "categories" %>
+
+    <%#= select_tag :category, options_for_select([ "animal", "career", "celebrity", "dev", "explicit", "fashion", "food", "history", "money", "movie", "music", "political", "religion", "science", "sports", "travel" ], "animal")%>
+    <%#= label_tag :category, "Enter one of this categories to get a random fact: animal, career, celebrity, dev, explicit, fashion, food, history, money, movie, music, political, religion, science, sports or travel"
+      #text_field_tag :category,
+      #params[:category],
+      #id: "category",
+     # class: "form-control mb-3",
+     # placeholder: "get a random fact from a this category"
+    #%>
+    <div class="d-inline ms-5">
+      <%= check_box_tag(:random) %>
+      <%= label_tag(:random, "Or click her to get a Random Chuck Norris fact!") %>
+    </div>
     <div>
       <%= submit_tag "Press to get your Chuck Norris facts!", class: "form-control btn btn-success mt-3 mb-5" %>
     </div>
@@ -31,11 +37,14 @@
         <% @page_arr.each do |fact| %>
           <h4 class="mb-4">"<%= fact['value'] %>"</h4>
         <% end %>
-        <%= link_to "Prev page", request.query_parameters.merge({:page => -3}) %>
-	      <%= link_to "Next page", request.query_parameters.merge({:page => +3}) %>
+        <div class="page-nav">
+          <div>
+            <%= link_to "Prev page", request.query_parameters.merge({:page => @page - 1}), class:"page"%>
+            <%= link_to "Next page", request.query_parameters.merge({:page => @page + 1}), class:"page"%>
+          </div>
+          <span class="current-page">Page <%=@page%></span>
+        </div>
       <%end%>
     <%end%>
   </div>
 </div>
-
-
