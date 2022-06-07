@@ -23,20 +23,20 @@ El buscador tendrá las siguientes características:
 2. Push to gh remote repo
 
 3. Create searches routes
-git
+
 4. Generate searches controller
   * Require json and open-uri
 
 5. Def Index in searches controller
-  * Store API URL in variable
-  * Create logic for Index method to rederct each API call to the right path and insert the param given by the view.
-  * Retrive the value from the parsed json to hand it to the view
-  * Paginate those results.
-
-7. Private:
-  * Permit required params method.
-  * Create an method to call the API, open , read and parse the resuls 
-
+  * Store API URL in variables
+  * The Index method will:
+    * if the params passed are from the random field or category dropdown in the view,
+     the method api_call will be call passing as argument the concatenation of the base_filepath and the random/categoy 
+     api_call will open, read and parse the json file and return it.
+     then it will retreve the value of the key 'value' and store it in a global variable so it can be call from the view.
+     * if the params passed are from the query field it ill call the api_call the same way but once they are parse it will iterate trouth them to extract each value of each the key 'value' and store them into the @resul_values variable as an array.
+    * And lastly call the method paginate() on those results to distribute them in pages that the view can use.
+    
 6. Create Index view
   * Searches form
   * Searches rendering
